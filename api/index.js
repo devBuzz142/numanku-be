@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
 });
 
 router.use("/channel", channelRouter);
-router.use("/user", userRouter);
-router.use("/kuki", kukiRouter);
+// router.use("/user", userRouter);
+// router.use("/kuki", kukiRouter);
 
 module.exports = router;
