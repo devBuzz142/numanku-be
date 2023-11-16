@@ -21,24 +21,17 @@ const connectDB = async (query, params) => {
     database: process.env.DB_DATABASE,
   });
 
-  conn.connect((err) => {
-    if (err) throw err;
-    console.log("----- Connected! -----");
-  });
+  return new Promise((resolve, reject) => {
+    conn.query(query(params), (err, res) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(res);
+      }
 
-  let queryResult;
-  conn.query(query(params), (err, result) => {
-    if (err) throw err;
-    console.log("----- Query : " + query.name + " -----");
-    res = result;
+      conn.end();
+    });
   });
-
-  conn.end((err) => {
-    if (err) throw err;
-    console.log("----- Closed! -----");
-  });
-
-  return queryResult;
 };
 
 module.exports = {
