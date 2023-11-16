@@ -30,7 +30,6 @@ const connectDB = async (query, params) => {
   conn.query(query(params), (err, result) => {
     if (err) throw err;
     console.log("----- Query : " + query.name + " -----");
-    console.log(result);
     res = result;
   });
 
