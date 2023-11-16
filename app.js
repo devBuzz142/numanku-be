@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
-const connectDB = require("./db");
+const db = require("./db");
 
 const app = express();
 
@@ -14,15 +14,7 @@ app.get("/", (req, res) => {
 app.listen(port, async () => {
   console.log(`Example app listening at http://localhost:${port}`);
 
-  const conn = await connectDB();
+  const res = await db.connectDB(db.DB_ACTIONS.channel.SELECT_ALL_CHANNEL, {});
 
-  conn.connect((err) => {
-    if (err) throw err;
-    console.log("Connected!");
-  });
-
-  conn.end((err) => {
-    if (err) throw err;
-    console.log("Closed!");
-  });
+  console.log(res);
 });

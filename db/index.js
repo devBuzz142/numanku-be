@@ -4,9 +4,15 @@ const channel = require("./channel");
 const user = require("./user");
 const kuki = require("./kuki");
 
+const DB_ACTIONS = {
+  channel,
+  user,
+  kuki,
+};
+
 const mariadb = require("mysql");
 
-const connectDB = async () => {
+const connectDB = async (query, params) => {
   const conn = await mariadb.createConnection({
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
@@ -17,26 +23,26 @@ const connectDB = async () => {
 
   conn.connect((err) => {
     if (err) throw err;
-    console.log("Connected!");
+    console.log("----- Connected! -----");
   });
 
-  conn.query("use numanku", (err, result) => {
+  let queryResult;
+  conn.query(query(params), (err, result) => {
     if (err) throw err;
-    console.log("Database numanku selected");
+    console.log("----- Query : " + query.name + " -----");
     console.log(result);
-  });
-
-  conn.query(channel.SELECT_ALL_CHANNEL(), (err, result) => {
-    if (err) throw err;
-    console.log("Table channel selected");
-    console.log(result);
+    res = result;
   });
 
   conn.end((err) => {
     if (err) throw err;
-    console.log("Closed!");
+    console.log("----- Closed! -----");
   });
+
+  return queryResult;
 };
 
-connectDB();
-// module.exports = connectDB;
+module.exports = {
+  connectDB,
+  DB_ACTIONS,
+};
