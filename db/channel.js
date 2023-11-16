@@ -43,7 +43,7 @@ const INSERT_CHANNEL = ({
   return `INSERT INTO channel (name, password, info, posterImage, link, outterImage0, outterImage1, outterImage2, innerImage0, innerImage1, innerImage2) VALUES ('${name}', '${password}', '${info}', '${posterImage}', '${link}', '${outterImage0}', '${outterImage1}', '${outterImage2}', '${innerImage0}', '${innerImage1}', '${innerImage2}')`;
 };
 
-const SELECT_CHANNEL = (id) => {
+const SELECT_CHANNEL = ({ id }) => {
   return `SELECT * FROM channel WHERE id = ${id}`;
 };
 
