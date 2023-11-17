@@ -8,7 +8,12 @@ const apiRouter = require("./api/index");
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+  })
+);
 
 const port = 3030;
 
