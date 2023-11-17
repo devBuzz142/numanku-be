@@ -27,7 +27,7 @@ router.get("/:id", async (req, res) => {
 router.get("/:channelId/kukies", async (req, res) => {
   const resData = await db.connectDB(
     db.DB_ACTIONS.kuki.SELCECT_ALL_KUKI_BY_CHANNEL_ID,
-    req.params
+    { channel_id: req.params.channelId }
   );
 
   const json = await JSON.stringify(resData);
@@ -36,10 +36,8 @@ router.get("/:channelId/kukies", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const resData = await db.connectDB(
-    db.DB_ACTIONS.channel.INSERT_CHANNEL,
-    req.body
-  );
+  console.log(req.body);
+  const resData = await db.connectDB(db.DB_ACTIONS.kuki.INSERT_KUKI, req.body);
 
   const json = await JSON.stringify(resData);
 

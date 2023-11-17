@@ -14,8 +14,8 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   const resData = await db.connectDB(
-    db.DB_ACTIONS.user.SELECT_USER_BY_ID,
-    req.params
+    db.DB_ACTIONS.user.SELECT_USER,
+    req.params.id
   );
 
   const json = await JSON.stringify(resData);
