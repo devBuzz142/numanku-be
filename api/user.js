@@ -26,6 +26,18 @@ router.get("/:id", async (req, res) => {
   res.send(json);
 });
 
+// get all users by channelId
+router.get("/:channelId/users", async (req, res) => {
+  const resData = await db.connectDB(
+    db.DB_ACTIONS.user.SELECT_ALL_USER_BY_CHANNEL_ID,
+    req.params
+  );
+
+  const json = await JSON.stringify(resData);
+
+  res.send(json);
+});
+
 router.post("/", async (req, res) => {
   const resData = await db.connectDB(
     db.DB_ACTIONS.channel.INSERT_CHANNEL,

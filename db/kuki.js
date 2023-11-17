@@ -47,8 +47,14 @@ const SELECT_KUKI = (id) => {
   return `SELECT * FROM kuki WHERE id = ${id}`;
 };
 
+const SELCECT_ALL_KUKI_BY_CHANNEL_ID = (channel_id) => {
+  return `SELECT * FROM kuki WHERE channel_id = ${channel_id}`;
+};
+
 module.exports = {
   CREATE_TABLE_KUKI,
   INSERT_KUKI,
   SELECT_ALL_KUKI,
+  SELECT_KUKI,
+  SELCECT_ALL_KUKI_BY_CHANNEL_ID,
 };

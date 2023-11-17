@@ -26,9 +26,14 @@ const SELECT_USER = (id) => {
   return `SELECT * FROM user WHERE id = ${id}`;
 };
 
+const SELECT_ALL_USER_BY_CHANNEL_ID = (channel_id) => {
+  return `SELECT * FROM user WHERE channel_id = ${channel_id}`;
+};
+
 module.exports = {
   CREATE_TABLE_USER,
   INSERT_USER,
   SELECT_ALL_USER,
   SELECT_USER,
+  SELECT_ALL_USER_BY_CHANNEL_ID,
 };
