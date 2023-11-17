@@ -36,7 +36,7 @@ const INSERT_KUKI = ({
   x,
   likeCount,
 }) => {
-  return `INSERT INTO kuki (content, channel_id, writer_id, outterImageIndex, innerImageIndex, isPrivate, isAnonymous, x, likeCount) VALUES ('${content}', '${channel_id}', '${writer_id}', '${outterImageIndex}', '${innerImageIndex}', '${isPrivate}', '${isAnonymous}', '${x}', '${likeCount}')`;
+  return `INSERT INTO kuki (content, channel_id, writer_id, outterImageIndex, innerImageIndex, isPrivate, isAnonymous, x, likeCount) VALUES ('${content}', '${channel_id}', '${writer_id}', ${outterImageIndex}, ${innerImageIndex}, ${isPrivate}, ${isAnonymous}, ${x}, ${likeCount})`;
 };
 
 const SELECT_ALL_KUKI = () => {
@@ -47,7 +47,7 @@ const SELECT_KUKI = (id) => {
   return `SELECT * FROM kuki WHERE id = ${id}`;
 };
 
-const SELCECT_ALL_KUKI_BY_CHANNEL_ID = (channel_id) => {
+const SELCECT_ALL_KUKI_BY_CHANNEL_ID = ({ channel_id }) => {
   return `SELECT * FROM kuki WHERE channel_id = ${channel_id}`;
 };
 

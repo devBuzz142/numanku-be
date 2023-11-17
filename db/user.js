@@ -15,7 +15,7 @@ const CREATE_TABLE_USER = () => `CREATE TABLE IF NOT EXISTS user (
     )`;
 
 const INSERT_USER = ({ name, password, isMaker, channel_id }) => {
-  return `INSERT INTO user (name, password, isMaker, channel_id) VALUES ('${name}', '${password}', '${isMaker}', '${channel_id}')`;
+  return `INSERT INTO user (name, password, isMaker, channel_id) VALUES ('${name}', '${password}', ${isMaker}, '${channel_id}')`;
 };
 
 const SELECT_ALL_USER = () => {
@@ -26,7 +26,7 @@ const SELECT_USER = (id) => {
   return `SELECT * FROM user WHERE id = ${id}`;
 };
 
-const SELECT_ALL_USER_BY_CHANNEL_ID = (channel_id) => {
+const SELECT_ALL_USER_BY_CHANNEL_ID = ({ channel_id }) => {
   return `SELECT * FROM user WHERE channel_id = ${channel_id}`;
 };
 
