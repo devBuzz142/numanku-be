@@ -18,7 +18,7 @@ const CREATE_TABLE_KUKI = () => `CREATE TABLE IF NOT EXISTS kuki (
     innerImageIndex INT(11) NOT NULL DEFAULT 0,
     isPrivate BOOLEAN NOT NULL DEFAULT false,
     isAnonymous BOOLEAN NOT NULL DEFAULT false,
-    left INT(11) NOT NULL DEFAULT 0,
+    x INT(11) NOT NULL DEFAULT 0,
     likeCount INT(11) NOT NULL DEFAULT 0,
     PRIMARY KEY (id),
     FOREIGN KEY (channel_id) REFERENCES channel(id),
@@ -33,10 +33,10 @@ const INSERT_KUKI = ({
   innerImageIndex,
   isPrivate,
   isAnonymous,
-  left,
+  x,
   likeCount,
 }) => {
-  return `INSERT INTO kuki (content, channel_id, writer_id, outterImageIndex, innerImageIndex, isPrivate, isAnonymous, left, likeCount) VALUES ('${content}', '${channel_id}', '${writer_id}', '${outterImageIndex}', '${innerImageIndex}', '${isPrivate}', '${isAnonymous}', '${left}', '${likeCount}')`;
+  return `INSERT INTO kuki (content, channel_id, writer_id, outterImageIndex, innerImageIndex, isPrivate, isAnonymous, x, likeCount) VALUES ('${content}', '${channel_id}', '${writer_id}', '${outterImageIndex}', '${innerImageIndex}', '${isPrivate}', '${isAnonymous}', '${x}', '${likeCount}')`;
 };
 
 const SELECT_ALL_KUKI = () => {
