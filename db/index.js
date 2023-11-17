@@ -22,6 +22,7 @@ const connectDB = async (query, params) => {
   });
 
   return new Promise((resolve, reject) => {
+    console.log("query : ", query);
     conn.query(query(params), (err, res) => {
       if (err) {
         reject(err);

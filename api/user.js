@@ -4,10 +4,7 @@ const router = express.Router();
 const db = require("../db");
 
 router.get("/", async (req, res) => {
-  const resData = await db.connectDB(
-    db.DB_ACTIONS.channel.SELECT_ALL_CHANNEL,
-    {}
-  );
+  const resData = await db.connectDB(db.DB_ACTIONS.user.SELECT_ALL_USER, {});
 
   // json
   const json = await JSON.stringify(resData);
@@ -17,7 +14,7 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   const resData = await db.connectDB(
-    db.DB_ACTIONS.channel.SELECT_CHANNEL,
+    db.DB_ACTIONS.user.SELECT_USER_BY_ID,
     req.params
   );
 
@@ -39,10 +36,11 @@ router.get("/:channelId/users", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const resData = await db.connectDB(
-    db.DB_ACTIONS.channel.INSERT_CHANNEL,
-    req.body
-  );
+  console.log(req.body);
+  const resData = await db.connectDB(db.DB_ACTIONS.user.INSERT_USER, {
+    ...req.body,
+    channel_id: 1,
+  });
 
   const json = await JSON.stringify(resData);
 

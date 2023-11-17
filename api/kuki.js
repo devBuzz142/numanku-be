@@ -4,10 +4,7 @@ const router = express.Router();
 const db = require("../db");
 
 router.get("/", async (req, res) => {
-  const resData = await db.connectDB(
-    db.DB_ACTIONS.channel.SELECT_ALL_CHANNEL,
-    {}
-  );
+  const resData = await db.connectDB(db.DB_ACTIONS.kuki.SELECT_ALL_KUKI, {});
 
   // json
   const json = await JSON.stringify(resData);
@@ -17,7 +14,7 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   const resData = await db.connectDB(
-    db.DB_ACTIONS.channel.SELECT_CHANNEL,
+    db.DB_ACTIONS.kuki.SELECT_KUKI_BY_ID,
     req.params
   );
 

@@ -43,7 +43,7 @@ const SELECT_ALL_KUKI = () => {
   return `SELECT * FROM kuki`;
 };
 
-const SELECT_KUKI = (id) => {
+const SELECT_KUKI_BY_ID = (id) => {
   return `SELECT * FROM kuki WHERE id = ${id}`;
 };
 
@@ -55,6 +55,6 @@ module.exports = {
   CREATE_TABLE_KUKI,
   INSERT_KUKI,
   SELECT_ALL_KUKI,
-  SELECT_KUKI,
+  SELECT_KUKI_BY_ID,
   SELCECT_ALL_KUKI_BY_CHANNEL_ID,
 };
