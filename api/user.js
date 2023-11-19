@@ -39,7 +39,7 @@ router.post("/", async (req, res) => {
   console.log(req.body);
   const resData = await db.connectDB(db.DB_ACTIONS.user.INSERT_USER, {
     ...req.body,
-    channel_id: 1,
+    channel_id: req.body.channelId,
   });
 
   const json = await JSON.stringify(resData);
